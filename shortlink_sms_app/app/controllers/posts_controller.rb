@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Post.new(post_params)
   end
 
   # GET /posts/1/edit
@@ -24,6 +24,12 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+
+    if params[:url].present?
+      client = Bitly.client
+      params[:short_url] = client.shorten(params[:url])
+    end
+
     @post = Post.new(post_params)
 
     respond_to do |format|
@@ -69,6 +75,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:url)
+      params.require(:post).permit(:id, :url, :short_url)
     end
 end
