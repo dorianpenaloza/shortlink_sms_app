@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new(post_params)
+    @post = Post.new
   end
 
   # GET /posts/1/edit
@@ -25,9 +25,9 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
 
-    if params[:url].present?
+    if params[:post][:url].present?
       client = Bitly.client
-      params[:short_url] = client.shorten(params[:url])
+      params[:post][:short_url] = client.shorten(params[:post][:url]).short_url
     end
 
     @post = Post.new(post_params)
