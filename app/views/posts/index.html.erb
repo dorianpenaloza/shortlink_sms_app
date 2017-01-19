@@ -1,5 +1,9 @@
+
+<h3 id="notice"><%= notice %></h3>
 <div class="ui blue inverted segment">
-  <p id="notice"><%= notice %></p>
+
+  <%= render 'form' %>
+
   <% @posts.each do |post| %>
     <div class="ui segment stackable two column grid">
       <div class="column ui divided selection list">
@@ -15,15 +19,8 @@
       <div class="column float right">
       <%= button_to 'Show', post, :class => "ui green basic button", :method => :get %>
       <%= button_to 'Edit', edit_post_path(post), :class => "ui blue basic button", :method => :get %>
-      <%= button_to 'Destroy', post, :class => "ui red basic button", method: :delete, data: { confirm: 'Wait, you sure???' } %>
+      <%= button_to 'Delete', post, :class => "ui red basic button ", method: :delete, data: { confirm: 'Wait! Are you sure?' } %>
       </div>
     </div>
   <% end %>
 </div>
-
-<br>
-
-
-
-
-  <%= button_to 'Add a new URL', new_post_path, :class => "ui bottom attached button", :method => :get %>

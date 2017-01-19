@@ -1,6 +1,31 @@
-<h1>Editing Post</h1>
+<h3 id="notice"><%= notice %></h3>
 
-<%= render 'form', post: @post %>
+<div class="ui blue inverted segment">
+  <div class="ui segment stackable two column grid">
+    <div class="column ui divided selection list">
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+        <%= form_for(@post) do |f| %>
+          <div class="field">
+            <div class="ui red horizontal label">Long URL</div>
+            <%= f.text_field :url, :class => "ui input segments new_input", :placeholder => "e.g. https://verylongurl.com", :required => 'true', :type => "url" %>
+          </div>
+
+          <a class="item" target="_blank" href="<%= @post.short_url %>">
+            <div class="ui blue horizontal label">Short URL</div>
+            <%= @post.short_url %>
+          </a>
+    </div>
+  </div>
+
+        <div class="ui buttons">
+          <%= link_to 'Back', @post, :class => "ui button" %>
+          <div class="or"></div>
+          <%= f.submit 'Update', :class => "ui green button" %>
+          <div class="or"></div>
+          <%= link_to 'Delete', @post, :class => "ui red button", method: :delete, data: { confirm: 'Wait! Are you sure?' } %>
+          <% end %>
+        </div>
+
+      <%= render "form_sms" %>
+
+</div>

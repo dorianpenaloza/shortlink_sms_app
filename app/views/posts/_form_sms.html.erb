@@ -1,0 +1,6 @@
+<h3><i class="external share icon"></i> Share this link with a friend</h3>
+  <%= form_tag('/send_sms', method: 'POST') do %>
+  <input id="input_phone" type="tel" placeholder="xxxxxxxxxx" name="number" class="ui input segments" title="No Spaces: XXXXXXXXXX" pattern="^\d{3}\d{3}\d{4}$" required>
+  <input type="hidden" value="<%= @post.short_url %>" name="message">
+  <button type="submit" class="ui green button"><i class="send icon"></i> Send Text</button>
+  <% end %>

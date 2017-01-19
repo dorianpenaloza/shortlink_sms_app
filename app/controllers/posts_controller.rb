@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @post = Post.new
   end
 
   # GET /posts/1
@@ -27,6 +28,8 @@ class PostsController < ApplicationController
 
     if params[:post][:url].present?
       client = Bitly.client
+      # IF YOU'RE HERE, GO BACK AND MAKE SURE THE URL IS CORRECT!
+      # IF YOU'RE HERE, GO BACK AND MAKE SURE THE URL IS CORRECT!
       params[:post][:short_url] = client.shorten(params[:post][:url]).short_url
     end
 
@@ -34,7 +37,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: 'Nice! Here is your shortlink' }
         #format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -49,12 +52,14 @@ class PostsController < ApplicationController
 
     if params[:post][:url].present?
       client = Bitly.client
+      # IF YOU'RE HERE, GO BACK AND MAKE SURE THE URL IS CORRECT!
+      # IF YOU'RE HERE, GO BACK AND MAKE SURE THE URL IS CORRECT!
       params[:post][:short_url] = client.shorten(params[:post][:url]).short_url
     end
 
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post, notice: 'Link updated' }
         #format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -68,7 +73,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_url, notice: 'Link deleted' }
       #format.json { head :no_content }
     end
   end
@@ -85,7 +90,10 @@ class PostsController < ApplicationController
      :from => "+18572142112",
      :body => "Hi, check out this awesome website: #{message}"
      })
-     redirect_to '/'
+
+     respond_to do |format|
+       format.html { redirect_to :back, notice: 'Message Sent!' }
+     end
    #end
   end #end of def send_sms
 

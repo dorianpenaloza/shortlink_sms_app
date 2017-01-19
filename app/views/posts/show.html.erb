@@ -1,20 +1,26 @@
-<p id="notice"><%= notice %></p>
+<h3 id="notice"><%= notice %></h3>
 
-<p>
-  <strong>Long URL:</strong>
-  <a target="_blank" href="<%= @post.url %>"><%= @post.url %></a>
-  <br>
-  <strong>Short URL:</strong>
-  <a target="_blank" href="<%= @post.short_url %>"><%= @post.short_url %></a>
-</p>
+<div class="ui blue inverted segment">
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+  <div class="ui segment stackable two column grid">
+    <div class="column ui divided selection list">
+      <a class="item" target="_blank" href="<%= @post.url %>">
+        <div class="ui red horizontal label">Long URL</div>
+        <%= @post.url %>
+      </a>
+      <a class="item" target="_blank" href="<%= @post.short_url %>">
+        <div class="ui blue horizontal label">Short URL</div>
+        <%= @post.short_url %>
+      </a>
+    </div>
+  </div>
 
-<h3>Want to send your short link to a friend?</h3>
+<div class="ui buttons">
+  <%= link_to 'Back', posts_path, :class => "ui button" %>
+  <div class="or"></div>
+  <%= link_to 'Edit', edit_post_path(@post), :class => "ui green button", :method => :get %>
+</div>
 
-    <%= form_tag('/send_sms', method: 'POST') do %>
-    <input type="tel" placeholder="enter number" name="number">
-    <input type="hidden" value="<%= @post.short_url %>" name="message">
-    <button type="submit">Submit</button>
-    <% end %>
+<%= render "form_sms" %>
+
+</div>

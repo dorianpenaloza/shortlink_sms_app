@@ -1,23 +1,16 @@
-<%= form_for @post do |f| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="ui segments">
+  <div class="ui green inverted segment">
+    <h3><i class="magic icon"></i> Generate Short Link</h3>
+  </div>
+  <div class="ui segment">
+    <%= form_for @post do |f| %>
+    <div class="field">
+      <%= f.label :url, "Copy and paste your very long URL here:" %>
+      <%= f.text_field :url, :class => "ui input segments new_input", :placeholder => "e.g. https://verylongurl.com", :required => 'true', :type => "url" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :url %>
-    <%= f.text_field :url %>
+    <div class="actions">
+    <%= f.submit 'Submit', :class => "ui green button" %>
+    </div>
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
-<% end %>
+</div>
