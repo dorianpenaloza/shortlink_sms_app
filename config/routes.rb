@@ -5,5 +5,4 @@ Rails.application.routes.draw do
    resources :posts
    resources :urls, only: [:new, :create]
    post '/send_sms' => 'posts#send_sms'
-
 end
