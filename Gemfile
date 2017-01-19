@@ -54,3 +54,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Bitlink gem for shortlinks
 gem 'bitly', '~> 0.9.0'
+
+#Twilio SMS for ruby
+gem 'twilio-ruby'

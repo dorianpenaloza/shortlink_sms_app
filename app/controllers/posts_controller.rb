@@ -73,6 +73,22 @@ class PostsController < ApplicationController
     end
   end
 
+  def send_sms
+   message = params[:message]
+   number = params[:number]
+   account_sid = 'AC1547d925a49e6c23d7b221223d78633a'
+   auth_token = 'fabc6dc88501f5e00975d2d036646bd7'
+   @client = Twilio::REST::Client.new account_sid, auth_token
+
+   @message = @client.account.messages.create({
+     :to => "+1"+"#{number}",
+     :from => "+18572142112",
+     :body => "Hi, check out this awesome website: #{message}"
+     })
+     redirect_to '/'
+   #end
+  end #end of def send_sms
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
