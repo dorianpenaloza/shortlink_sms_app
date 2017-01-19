@@ -13,8 +13,8 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td>Long URL<%= post.url %></td>
-        <td>Short URL<%= post.short_url %></td>
+        <td>Long URL <a target="_blank" href="<%= post.url %>"><%= post.url %></a></td>
+        <td>Short URL <a target="_blank" href="<%= post.short_url %>"><%= post.short_url %></a></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

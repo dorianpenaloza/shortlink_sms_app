@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Url:</strong>
-  <%= @post.url %>
+  <strong>Long URL:</strong>
+  <a target="_blank" href="<%= @post.url %>"><%= @post.url %></a>
+  <br>
+  <strong>Short URL:</strong>
+  <a target="_blank" href="<%= @post.short_url %>"><%= @post.short_url %></a>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
