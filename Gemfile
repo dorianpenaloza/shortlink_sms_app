@@ -62,3 +62,6 @@ gem 'bitly', '~> 0.9.0'
 
 #Twilio SMS for ruby
 gem 'twilio-ruby'
+
+#Semantic UI for styling
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
