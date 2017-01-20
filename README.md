@@ -1,24 +1,51 @@
-# README
+# Short Link SMS Application
+[https://shortlinksms.herokuapp.com/]
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Uses [Ruby on Rails] as the framework.
+* [Bitly] to create short url links.
+* [Twilio] to send text messages.
+* [Semantic UI] for styling.
 
-Things you may want to cover:
+#### Install locally
 
-* Ruby version
+1. Make sure Ruby is installed on your system. Open your terminal and run command:
+```
+$ ruby -v
+```
 
-* System dependencies
+2. Make sure Rails is installed
+```
+$ rails -v
+```
 
-* Configuration
+3. Clone repository
+```
+$ git clone https://github.com/dorianpenaloza/shortlink_sms_app.git
+```
 
-* Database creation
+4. Install all gem dependencies
+```
+$ bundle install
+```
 
-* Database initialization
+5. Create db and migrate schema
+```
+$ rake db:create
+$ rake db:migrate
+```
 
-* How to run the test suite
+6. Run the app
+```
+$ rails server
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+#### Room for improvement
+* Making the UI responsive for mobile.
+* Adding `alt` tags for visually impaired accessibility.
+* Anything else you like!
 
-* Deployment instructions
-
-* ...
+[https://shortlinksms.herokuapp.com/]: <https://shortlinksms.herokuapp.com/>
+[Ruby on Rails]: <http://rubyonrails.org/>
+[Bitly]: <https://bitly.com/>
+[Twilio]: <https://www.twilio.com/>
+[Semantic UI]: <http://semantic-ui.com/>

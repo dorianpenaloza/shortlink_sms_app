@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Nice! Here is your shortlink' }
+        format.html { redirect_to @post, notice: 'Nice! Here is your shortlink:'}
         #format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Link updated' }
+        format.html { redirect_to @post, notice: 'Link updated!' }
         #format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -73,7 +73,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Link deleted' }
+      format.html { redirect_to posts_url, notice: 'Link deleted!' }
       #format.json { head :no_content }
     end
   end

@@ -1,4 +1,4 @@
-<h3 id="notice"><%= notice %></h3>
+<h3 id="notice" class="ui center aligned header"><%= notice %></h3>
 
 <div class="ui blue inverted segment">
 
@@ -19,6 +19,8 @@
   <%= link_to 'Back', posts_path, :class => "ui button" %>
   <div class="or"></div>
   <%= link_to 'Edit', edit_post_path(@post), :class => "ui green button", :method => :get %>
+  <div class="or"></div>
+  <%= link_to 'Delete', @post, :class => "ui red button", method: :delete, data: { confirm: 'Wait! Are you sure?' } %>
 </div>
 
 <%= render "form_sms" %>
