@@ -8,8 +8,11 @@
         <div class="ui red horizontal label">Long URL</div>
         <%= @post.url %>
       </a>
+
+      <a class="item" target="_blank" href="<%= @post.url %>">
         <div class="ui blue horizontal label">Short URL</div>
-          <%= request.host %>/<%= @post.short_url %>
+          https://<%= request.host %>/<%= @post.short_url %>.com
+      </a>
     </div>
   </div>
 
