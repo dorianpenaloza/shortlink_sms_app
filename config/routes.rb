@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
    root to: 'posts#index'
-   get 'urls/new'
-   get 'urls/create'
-   resources :posts
-   resources :urls, only: [:new, :create]
+  #  get 'post', to: 'posts#show'
+  #  get 'show', to: :show, controller: 'posts'
+   get '/:short_url' => 'posts#redirect'
    post '/send_sms' => 'posts#send_sms'
+
+   resources :posts
+  #  get 'urls/new'
+  #  get 'urls/create'
+  #  resources :urls, only: [:new, :create]
 end

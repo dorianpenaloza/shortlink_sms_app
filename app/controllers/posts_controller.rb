@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
-    @post = Post.new
+    @post =  Post.new
   end
 
   # GET /posts/1
@@ -26,11 +26,13 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
 
-    if params[:post][:url].present?
-      params[:post][:short_url] = (params[:post][:url])
-      #client = Bitly.client
-      #params[:post][:short_url] = client.shorten(params[:post][:url]).short_url
-    end
+    # if params[:post][:short_url]
+    #   params[:post][:url]
+    #   #  request.host << params[:post][:short_url]
+    #   #  (params[:post][:url])
+    #   #client = Bitly.client
+    #   #params[:post][:short_url] = client.shorten(params[:post][:url]).short_url
+    # end
 
     @post = Post.new(post_params)
 
@@ -45,15 +47,10 @@ class PostsController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-
-    if params[:post][:url].present?
-      params[:post][:short_url] = (params[:post][:url])
-      #client = Bitly.client
-      #params[:post][:short_url] = client.shorten(params[:post][:url]).short_url
-    end
 
     respond_to do |format|
       if @post.update(post_params)
@@ -95,14 +92,19 @@ class PostsController < ApplicationController
    #end
   end #end of def send_sms
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  def redirect
+    @post = Post.find(params[:short_url])
+    redirect_to @post.(params[:url])
+  end
 
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+      @post = Post.find(params[:id])
+  end
+  private
     # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:id, :url, :short_url)
-    end
+  def post_params
+    params.require(:post).permit(:id, :url, :short_url)
+  end
 end

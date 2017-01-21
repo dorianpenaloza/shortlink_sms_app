@@ -65,3 +65,9 @@ gem 'twilio-ruby'
 
 #Semantic UI for styling
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+
+#better errors for debbuging
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
