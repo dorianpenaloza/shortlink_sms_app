@@ -5,16 +5,12 @@
     <div class="column ui divided selection list">
 
         <%= form_for(@post) do |f| %>
-          <div class="field">
+          <div class="">
             <div class="ui red horizontal label">Long URL</div>
-            <%= f.text_field :url, :class => "ui input segments new_input", :placeholder => "e.g. https://verylongurl.com", :required => 'true', :type => "url" %>
+            <%= f.text_field :url, :class => "ui input segments new_input", :placeholder => "e.g. https://verylongurl.com", :required => 'true', :type => "url" %><br>
+            <div class="ui blue horizontal label">Short URL</div>
             <%= f.text_field :short_url, :class => "ui input segments", :placeholder => "custom name", :required => 'true' %>
           </div>
-
-          <a class="item" target="_blank" href="<%= @post.short_url %>">
-            <div class="ui blue horizontal label">Short URL</div>
-            <%= post.short_url %>
-          </a>
     </div>
   </div>
 

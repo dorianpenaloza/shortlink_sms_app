@@ -2,7 +2,7 @@ Rails.application.routes.draw do
    root to: 'posts#index'
   #  get 'post', to: 'posts#show'
   #  get 'show', to: :show, controller: 'posts'
-   get '/:short_url' => 'posts#redirect'
+   get '/posts' => 'posts#index'
    get '/:short_url' => 'posts#redirect'
    post '/send_sms' => 'posts#send_sms'
 

@@ -21,7 +21,6 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    redirect_to @post.url
   end
 
   # POST /posts
@@ -85,7 +84,7 @@ class PostsController < ApplicationController
    @message = @client.account.messages.create({
      :to => "+1"+"#{number}",
      :from => "+18572142112",
-     :body => "Hi, check out this awesome website: #{message}"
+     :body => "Hi, check out this awesome website: https://shortlinksms.herokuapp.com/#{message}"
      })
 
      respond_to do |format|
@@ -94,16 +93,16 @@ class PostsController < ApplicationController
    #end
   end #end of def send_sms
 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+      @post = Post.find(params[:id])
+  end
+
   def redirect
     @post = Post.find_by(short_url: params[:short_url])
     redirect_to @post.url
   end
 
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_post
-      @post = Post.find(params[:id])
-  end
   private
     # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
