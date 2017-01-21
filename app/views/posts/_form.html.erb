@@ -7,6 +7,7 @@
     <div class="field">
       <%= f.label :url, "Copy and paste your very long URL here:" %>
       <%= f.text_field :url, :class => "ui input segments new_input", :placeholder => "e.g. https://verylongurl.com", :required => 'true', :type => "url" %>
+      <%= f.text_field :url, :class => "ui input segments", :placeholder => "custom name", :required => 'true' %>
     </div>
     <div class="actions">
     <%= f.submit 'Submit', :class => "ui green button" %>

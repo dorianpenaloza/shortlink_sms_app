@@ -27,10 +27,9 @@ class PostsController < ApplicationController
   def create
 
     if params[:post][:url].present?
-      client = Bitly.client
-      # IF YOU'RE HERE, GO BACK AND MAKE SURE THE URL IS CORRECT!
-      # IF YOU'RE HERE, GO BACK AND MAKE SURE THE URL IS CORRECT!
-      params[:post][:short_url] = client.shorten(params[:post][:url]).short_url
+      params[:post][:short_url] = (params[:post][:url])
+      #client = Bitly.client
+      #params[:post][:short_url] = client.shorten(params[:post][:url]).short_url
     end
 
     @post = Post.new(post_params)
@@ -51,10 +50,9 @@ class PostsController < ApplicationController
   def update
 
     if params[:post][:url].present?
-      client = Bitly.client
-      # IF YOU'RE HERE, GO BACK AND MAKE SURE THE URL IS CORRECT!
-      # IF YOU'RE HERE, GO BACK AND MAKE SURE THE URL IS CORRECT!
-      params[:post][:short_url] = client.shorten(params[:post][:url]).short_url
+      params[:post][:short_url] = (params[:post][:url])
+      #client = Bitly.client
+      #params[:post][:short_url] = client.shorten(params[:post][:url]).short_url
     end
 
     respond_to do |format|
