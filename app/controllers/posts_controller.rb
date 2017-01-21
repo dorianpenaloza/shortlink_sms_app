@@ -15,11 +15,13 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
+    @post = Post.find_by(short_url: params[:short_url])
     @post = Post.new
   end
 
   # GET /posts/1/edit
   def edit
+    redirect_to @post.url
   end
 
   # POST /posts
@@ -93,8 +95,8 @@ class PostsController < ApplicationController
   end #end of def send_sms
 
   def redirect
-    @post = Post.find(params[:short_url])
-    redirect_to @post.(params[:url])
+    @post = Post.find_by(short_url: params[:short_url])
+    redirect_to @post.url
   end
 
 
