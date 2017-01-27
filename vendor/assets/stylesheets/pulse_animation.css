@@ -1,0 +1,32 @@
+body {
+  -webkit-animation: pulse 10s infinite;
+  animation: pulse 10s infinite;
+}
+
+@-webkit-keyframes pulse {
+    0% {background:#FFFFFF}
+    10% {background:#FFECEC}
+    20% {background:#FFCECE}
+    30% {background:#FFA8A8}
+    40% {background:#FF8A8A}
+    50% {background:#FF4848}
+    60% {background:#FF8A8A}
+    70% {background:#FFA8A8}
+    80% {background:#FFCECE}
+    90% {background:#FFECEC}
+    100% {background:#FFFFFF}
+}
+
+@keyframes pulse {
+  0% {background:#FFFFFF}
+  10% {background:#FFECEC}
+  20% {background:#FFCECE}
+  30% {background:#FFA8A8}
+  40% {background:#FF8A8A}
+  50% {background:#FF4848}
+  60% {background:#FF8A8A}
+  70% {background:#FFA8A8}
+  80% {background:#FFCECE}
+  90% {background:#FFECEC}
+  100% {background:#FFFFFF}
+}

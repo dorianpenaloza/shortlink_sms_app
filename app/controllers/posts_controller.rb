@@ -26,15 +26,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-
-    # if params[:post][:short_url]
-    #   params[:post][:url]
-    #   #  request.host << params[:post][:short_url]
-    #   #  (params[:post][:url])
-    #   #client = Bitly.client
-    #   #params[:post][:short_url] = client.shorten(params[:post][:url]).short_url
-    # end
-
+    
     @post = Post.new(post_params)
 
     respond_to do |format|

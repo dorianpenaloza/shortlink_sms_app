@@ -1,13 +1,14 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+html {
+  margin: 0px auto;
+  width: 700px;
+}
 body {
-  color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  margin: 33px;
 }
 
 p, ol, ul, td {
@@ -94,10 +95,24 @@ label {
 form {
   display: inline-block;
 }
+
 .new_input {
   width: 350px;
 }
+
+#form {
+  text-align: center;
+}
+
 #input_phone {
   color: black;
   height: 35px;
+}
+
+@media only screen and (max-width: 700px)
+{
+  html {
+    margin: 0px auto;
+    width: 100%;
+  }
 }
