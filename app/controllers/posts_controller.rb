@@ -79,9 +79,10 @@ class PostsController < ApplicationController
      :body => "Hi, check out this awesome website: https://shortlinksms.herokuapp.com/#{message}"
      })
 
-     Twilio::TwiML::Response.new do |r|
-       r.Say "Hello"
-     end.text
+     twiml = Twilio::TwiML::Response.new do |r|
+       r.Message "Hey Monkey. Thanks for the message!"
+     end
+     twiml.text
 
      respond_to do |format|
        format.html { redirect_to :back, notice: 'Message Sent!' }
