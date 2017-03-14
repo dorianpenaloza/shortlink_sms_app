@@ -10,11 +10,4 @@ Rails.application.routes.draw do
   #  get 'urls/new'
   #  get 'urls/create'
   #  resources :urls, only: [:new, :create]
-
-    resource :messages do
-    collection do
-      post 'reply'
-    end
-  end
-
 end

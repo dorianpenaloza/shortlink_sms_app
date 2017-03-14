@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :verify_authenticity_token
 
   # GET /posts
   # GET /posts.json
@@ -80,24 +79,19 @@ class PostsController < ApplicationController
      :body => "Hi, check out this awesome website: https://shortlinksms.herokuapp.com/#{message}"
      })
 
+     Twilio::TwiML::Response.new do |r|
+        if body == "hello"
+            r.Message "Hi!"
+        elsif body == "bye"
+            r.Message "Goodbye"
+        end
+    end.text
+
      respond_to do |format|
        format.html { redirect_to :back, notice: 'Message Sent!' }
      end
    #end
   end #end of def send_sms
-
-  #reply section 03/14
-  def reply
-    message_body = params["Body"]
-    from_number = params["From"]
-    boot_twilio
-    sms = @client.messages.create(
-      from: Rails.application.secrets.twilio_number,
-      to: from_number,
-      body: "Hello there, thanks for texting me. Your number is #{from_number}."
-    )
-
-  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
@@ -111,14 +105,6 @@ class PostsController < ApplicationController
 
   private
     # Never trust parameters from the scary internet, only allow the white list through.
-
-  #reply section 03/14
-  def boot_twilio
-    account_sid = Rails.application.secrets.twilio_sid
-    auth_token = Rails.application.secrets.twilio_token
-    @client = Twilio::REST::Client.new account_sid, auth_token
-  end
-
   def post_params
     params.require(:post).permit(:id, :url, :short_url)
   end
