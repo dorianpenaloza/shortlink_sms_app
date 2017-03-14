@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :verify_authenticity_token
   # GET /posts
   # GET /posts.json
   def index
@@ -79,16 +79,19 @@ class PostsController < ApplicationController
      :body => "Hi, check out this awesome website: https://shortlinksms.herokuapp.com/#{message}"
      })
 
-     twiml = Twilio::TwiML::Response.new do |r|
-       r.Message "Hey Monkey. Thanks for the message!"
-     end
-     twiml.text
-
      respond_to do |format|
        format.html { redirect_to :back, notice: 'Message Sent!' }
      end
    #end
   end #end of def send_sms
+
+  def receive_sms
+   response = Twilio::TwiML::Response.new do |r|
+     r.Message 'Hey there. Congrats on integrating Twilio into your Rails 4 app.'
+   end
+
+   render xml: response.to_xml
+ end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
