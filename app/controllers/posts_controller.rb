@@ -85,12 +85,15 @@ class PostsController < ApplicationController
    #end
   end #end of def send_sms
 
-  def receive_sms
-   response = Twilio::TwiML::Response.new do |r|
-     r.Message 'Hey there. Congrats on integrating Twilio into your Rails 4 app.'
-   end
-
-   render xml: response.to_xml
+  def reply
+      message_body = params["Body"]
+      from_number = params["From"]
+      boot_twilio
+      sms = @client.messages.create(
+        from: Rails.application.secrets.twilio_number,
+        to: from_number,
+        body: "Hello there, thanks for texting me. Your number is #{from_number}."
+      )
  end
 
   # Use callbacks to share common setup or constraints between actions.
@@ -108,4 +111,11 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:id, :url, :short_url)
   end
+
+  def boot_twilio
+    account_sid = Rails.application.secrets.twilio_sid
+    auth_token = Rails.application.secrets.twilio_token
+    @client = Twilio::REST::Client.new account_sid, auth_token
+  end
+
 end
