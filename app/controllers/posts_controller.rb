@@ -76,7 +76,8 @@ class PostsController < ApplicationController
    @message = @client.account.messages.create({
      :to => "+1"+"#{number}",
      :from => "+18572142112",
-     :body => "Hi, check out this awesome website: https://shortlinksms.herokuapp.com/#{message}"
+     #:body => "Hi, check out this awesome website: https://shortlinksms.herokuapp.com/#{message}"
+     :body => "Click here to #{message}: http://23.21.63.54:9700/?id=Nzg3MDE="
      })
 
      respond_to do |format|
@@ -94,6 +95,7 @@ class PostsController < ApplicationController
         to: from_number,
         body: "Hello there, thanks for texting me. Your number is #{from_number}."
       )
+
  end
 
   # Use callbacks to share common setup or constraints between actions.
