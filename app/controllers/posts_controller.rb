@@ -71,21 +71,21 @@ class PostsController < ApplicationController
    number = params[:number]
    account_sid = 'AC1547d925a49e6c23d7b221223d78633a'
    auth_token = 'fabc6dc88501f5e00975d2d036646bd7'
-   @client = Twilio::REST::Client.new account_sid, auth_token
+   #@client = Twilio::REST::Client.new account_sid, auth_token
 
-   @message = @client.account.messages.create({
-     :to => "+1"+"#{number}",
-     :from => "+18572142112",
-     :body => "Hi, check out this awesome website: https://shortlinksms.herokuapp.com/#{message}"
-     })
+  #  @message = @client.account.messages.create({
+  #    :to => "+1"+"#{number}",
+  #    :from => "+18572142112",
+  #    :body => "Hi, check out this awesome website: https://shortlinksms.herokuapp.com/#{message}"
+  #    })
 
-     Twilio::TwiML::Response.new do |r|
+     @client = Twilio::TwiML::Response.new account_sid, auth_token do |r|
         if body == "hello"
             r.Message "Hi!"
         elsif body == "bye"
             r.Message "Goodbye"
         end
-    end.text
+      end.text
 
      respond_to do |format|
        format.html { redirect_to :back, notice: 'Message Sent!' }
