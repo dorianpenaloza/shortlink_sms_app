@@ -2,7 +2,6 @@
 [https://shortlinksms.herokuapp.com/]
 
 * Uses [Ruby on Rails] as the framework.
-* [Bitly] to create short url links.
 * [Twilio] to send text messages.
 * [Semantic UI] for styling.
 
