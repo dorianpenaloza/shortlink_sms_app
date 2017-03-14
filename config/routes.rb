@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   #  get 'urls/create'
   #  resources :urls, only: [:new, :create]
 
-  resource :messages do
+  resource :posts do
     collection do
       post 'reply'
     end
