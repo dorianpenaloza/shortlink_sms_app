@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  skip_before_action :verify_authenticity_token
+
   # GET /posts
   # GET /posts.json
   def index
@@ -76,8 +76,7 @@ class PostsController < ApplicationController
    @message = @client.account.messages.create({
      :to => "+1"+"#{number}",
      :from => "+18572142112",
-     #:body => "Hi, check out this awesome website: https://shortlinksms.herokuapp.com/#{message}"
-     :body => "Click here to #{message}: http://23.21.63.54:9700/?id=Nzg3MDE="
+     :body => "Hi, check out this awesome website: https://shortlinksms.herokuapp.com/#{message}"
      })
 
      respond_to do |format|
@@ -85,18 +84,6 @@ class PostsController < ApplicationController
      end
    #end
   end #end of def send_sms
-
-  def reply
-      message_body = params["Body"]
-      from_number = params["From"]
-      boot_twilio
-      sms = @client.messages.create(
-        from: Rails.application.secrets.twilio_number,
-        to: from_number,
-        body: "Hello there, thanks for texting me. Your number is #{from_number}."
-      )
-
- end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
@@ -113,11 +100,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:id, :url, :short_url)
   end
-
-  def boot_twilio
-    account_sid = Rails.application.secrets.twilio_sid
-    auth_token = Rails.application.secrets.twilio_token
-    @client = Twilio::REST::Client.new account_sid, auth_token
-  end
-
 end
